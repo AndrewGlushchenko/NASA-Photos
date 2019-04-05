@@ -8,10 +8,6 @@
 
 import UIKit
 
-
-
-
-
 class ViewController: UIViewController {
 
     var photoInfo: PhotoInfo? {

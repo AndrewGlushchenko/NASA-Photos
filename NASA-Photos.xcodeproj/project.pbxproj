@@ -60,9 +60,9 @@
 		AC34B3A32257AE9800C6D3AB /* NASA-Photos */ = {
 			isa = PBXGroup;
 			children = (
+				AC34B3B62257AEA600C6D3AB /* Controllers */,
 				AC34B3B82257AEC300C6D3AB /* Extensions */,
 				AC34B3B72257AEB800C6D3AB /* Models */,
-				AC34B3B62257AEA600C6D3AB /* Controllers */,
 				AC34B3A42257AE9800C6D3AB /* AppDelegate.swift */,
 				AC34B3A82257AE9800C6D3AB /* Main.storyboard */,
 				AC34B3AB2257AE9A00C6D3AB /* Assets.xcassets */,
@@ -75,8 +75,8 @@
 		AC34B3B62257AEA600C6D3AB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				AC34B3A62257AE9800C6D3AB /* ViewController.swift */,
 				AC34B3BD2257C2FB00C6D3AB /* Networking.swift */,
+				AC34B3A62257AE9800C6D3AB /* ViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";

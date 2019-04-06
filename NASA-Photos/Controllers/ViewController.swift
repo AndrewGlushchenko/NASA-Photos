@@ -21,8 +21,16 @@ struct WorkDate {
         return  formatter.string(from: date)
     }
     
-    mutating func incDay() {
-        self.date =  self.date + (60*60*24)
+    mutating func incDay() -> Bool {
+        let calendar = Calendar.current
+        let datetoday = Date()
+        let diffInDays = calendar.dateComponents([.day], from: self.date, to: datetoday).day ?? 0
+        if diffInDays > 0 {
+            self.date =  self.date + (60*60*24)
+            return true
+        } else {
+            return false
+        }
     }
     
     mutating func decDay() {
@@ -42,7 +50,7 @@ class ViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var tmrrButton: UIButton!
     
     
-    var curDate = Data()
+    
     var workDate = WorkDate(date: Date())
    
     
@@ -57,10 +65,9 @@ class ViewController: UIViewController, UITextViewDelegate {
         
         imageView.isUserInteractionEnabled = true
         
-        print(#function, #line, "Current date: ", workDate.query)
         
         descriptionView.delegate = self
-        Networking.shared.fetchPhotoInfo { self.photoInfo = $0 }
+        Networking.shared.fetchPhotoInfo(workdate: workDate) { self.photoInfo = $0 }
         
         let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector (self.handleSwipe(sender:)))
         rightSwipe.direction = .right
@@ -74,28 +81,20 @@ class ViewController: UIViewController, UITextViewDelegate {
     }
     
     @objc func handleSwipe(sender: UISwipeGestureRecognizer?) {
-     
-        let calendar = Calendar.current
-        let datetoday = Date()
-        let diffInDays = calendar.dateComponents([.day], from: workDate.date, to: datetoday).day ?? 0
-       
-        print( #function, #line, datetoday)
-        print("Difference in days: ", diffInDays)
-
+ 
         if let handleSwipe = sender {
             switch handleSwipe.direction {
             case .left:
-                if diffInDays > 0 {
-                    workDate.incDay()
+                
+                if workDate.incDay() {
+                    print(#function, #line, "Left - work date", workDate.query)
+                    Networking.shared.fetchPhotoInfo(workdate: workDate) { self.photoInfo = $0 }
                 }
-                print(#function, #line, "Left - work date", workDate.query)
-
-        
             case .right:
                 
                 workDate.decDay()
                 print(#function, #line, "Righr - work date", workDate.query)
-
+                Networking.shared.fetchPhotoInfo(workdate: workDate) { self.photoInfo = $0 }
 
             default:
                 break

@@ -58,6 +58,9 @@ class ViewController: UIViewController, UITextViewDelegate {
             if cprght != nil {
                 self.copyrightLabel.textColor = .black
                 self.copyrightLabel.text = cprght
+            } else {
+                self.copyrightLabel.textColor = .gray
+                self.copyrightLabel.text = "Copyright information is unavailable"
             }
             
         }

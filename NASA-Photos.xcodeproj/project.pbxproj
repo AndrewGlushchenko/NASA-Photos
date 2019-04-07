@@ -15,6 +15,7 @@
 		AC34B3BA2257BF5C00C6D3AB /* PhotoInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC34B3B92257BF5C00C6D3AB /* PhotoInfo.swift */; };
 		AC34B3BE2257C2FB00C6D3AB /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC34B3BD2257C2FB00C6D3AB /* Networking.swift */; };
 		AC34B3C02257D0DC00C6D3AB /* URL+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC34B3BF2257D0DC00C6D3AB /* URL+extension.swift */; };
+		ACEFBE3D225A57B20013C7A9 /* WorkDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFBE3C225A57B20013C7A9 /* WorkDate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		AC34B3B92257BF5C00C6D3AB /* PhotoInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoInfo.swift; sourceTree = "<group>"; };
 		AC34B3BD2257C2FB00C6D3AB /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		AC34B3BF2257D0DC00C6D3AB /* URL+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+extension.swift"; sourceTree = "<group>"; };
+		ACEFBE3C225A57B20013C7A9 /* WorkDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkDate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				AC34B3B92257BF5C00C6D3AB /* PhotoInfo.swift */,
+				ACEFBE3C225A57B20013C7A9 /* WorkDate.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACEFBE3D225A57B20013C7A9 /* WorkDate.swift in Sources */,
 				AC34B3BA2257BF5C00C6D3AB /* PhotoInfo.swift in Sources */,
 				AC34B3A72257AE9800C6D3AB /* ViewController.swift in Sources */,
 				AC34B3A52257AE9800C6D3AB /* AppDelegate.swift in Sources */,

@@ -25,32 +25,41 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="274"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bRU-eV-Dnb">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="32"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvd-cd-Fd1">
-                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="60" height="32"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="50" id="37a-bE-MOp"/>
+                                                            <constraint firstAttribute="width" constant="60" id="37a-bE-MOp"/>
                                                         </constraints>
-                                                        <state key="normal" title="Туда"/>
+                                                        <state key="normal" title="&lt; Туда"/>
+                                                        <connections>
+                                                            <action selector="ystdButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TuT-xA-Y66"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m8S-Yx-UIr">
-                                                        <rect key="frame" x="50" y="0.0" width="220" height="30"/>
+                                                        <rect key="frame" x="60" y="0.0" width="200" height="32"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fo0-Ce-8AV">
-                                                        <rect key="frame" x="270" y="0.0" width="50" height="30"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fo0-Ce-8AV">
+                                                        <rect key="frame" x="260" y="0.0" width="60" height="32"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="50" id="uLs-DG-Z1E"/>
+                                                            <constraint firstAttribute="width" constant="60" id="uLs-DG-Z1E"/>
                                                         </constraints>
-                                                        <state key="normal" title="Сюда"/>
+                                                        <state key="normal" title="Сюда &gt;"/>
+                                                        <connections>
+                                                            <action selector="tmrrButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HbT-c7-cfn"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="32" id="e20-F3-r7Y"/>
+                                                </constraints>
                                             </stackView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AeA-Zh-AeQ">
-                                                <rect key="frame" x="0.0" y="30" width="320" height="244"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AeA-Zh-AeQ">
+                                                <rect key="frame" x="0.0" y="32" width="320" height="242"/>
                                             </imageView>
                                         </subviews>
                                     </stackView>
@@ -63,7 +72,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="avn-iC-Kpq">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="avn-iC-Kpq">
                                                 <rect key="frame" x="0.0" y="20.5" width="320" height="228.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>

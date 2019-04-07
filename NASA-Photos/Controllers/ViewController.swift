@@ -8,35 +8,6 @@
 
 import UIKit
 
-struct WorkDate {
-    var date: Date
-    var query: String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        return  formatter.string(from: date)
-    }
-    var label: String  {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM.yyyy"
-        return  formatter.string(from: date)
-    }
-    
-    mutating func incDay() -> Bool {
-        let calendar = Calendar.current
-        let datetoday = Date()
-        let diffInDays = calendar.dateComponents([.day], from: self.date, to: datetoday).day ?? 0
-        if diffInDays > 0 {
-            self.date =  self.date + (60*60*24)
-            return true
-        } else {
-            return false
-        }
-    }
-    
-    mutating func decDay() {
-        self.date =  self.date - (60*60*24)
-    }
-}
     
 class ViewController: UIViewController, UITextViewDelegate {
 
@@ -50,8 +21,7 @@ class ViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var tmrrButton: UIButton!
     
     
-    
-    var workDate = WorkDate(date: Date())
+    var workDate = WorkDate()
    
     
     var photoInfo: PhotoInfo? {
@@ -65,8 +35,8 @@ class ViewController: UIViewController, UITextViewDelegate {
         
         imageView.isUserInteractionEnabled = true
         
-        
         descriptionView.delegate = self
+        
         Networking.shared.fetchPhotoInfo(workdate: workDate) { self.photoInfo = $0 }
         
         let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector (self.handleSwipe(sender:)))
@@ -80,6 +50,32 @@ class ViewController: UIViewController, UITextViewDelegate {
         
     }
     
+    
+    @IBAction func ystdButtonPress(_ sender: UIButton) {
+        
+        workDate.decDay()
+        if  tmrrButton.isEnabled == false { tmrrButton.isEnabled = true }
+        print(#function, #line, "Righr - work date", workDate.query)
+        Networking.shared.fetchPhotoInfo(workdate: workDate) { self.photoInfo = $0 }
+      
+    }
+    
+    
+    @IBAction func tmrrButtonPress(_ sender: UIButton) {
+
+        if workDate.incDay() {
+            print(#function, #line, "Left - work date", workDate.query)
+            Networking.shared.fetchPhotoInfo(workdate: workDate) { self.photoInfo = $0 }
+        }
+         
+        if workDate.query ==  workDate.currdate {
+            tmrrButton.isEnabled = false
+        }
+        
+    }
+    
+    
+    
     @objc func handleSwipe(sender: UISwipeGestureRecognizer?) {
  
         if let handleSwipe = sender {
@@ -90,9 +86,14 @@ class ViewController: UIViewController, UITextViewDelegate {
                     print(#function, #line, "Left - work date", workDate.query)
                     Networking.shared.fetchPhotoInfo(workdate: workDate) { self.photoInfo = $0 }
                 }
+                if workDate.query ==  workDate.currdate {
+                    tmrrButton.isEnabled = false
+                }
+                
             case .right:
                 
                 workDate.decDay()
+                if  tmrrButton.isEnabled == false { tmrrButton.isEnabled = true }
                 print(#function, #line, "Righr - work date", workDate.query)
                 Networking.shared.fetchPhotoInfo(workdate: workDate) { self.photoInfo = $0 }
 
@@ -108,10 +109,9 @@ class ViewController: UIViewController, UITextViewDelegate {
             OperationQueue.main.addOperation {
                 self.imageView.image = image
             }
-        }
-        
+        }        
         DispatchQueue.main.async {
-            self.dateLabel.text = "Фотография \(self.workDate.label)"
+            self.dateLabel.text = "Фото \(self.workDate.label)"
             self.titleLabel.text = self.photoInfo?.title
             self.descriptionView.text = self.photoInfo?.description
             //            self.descriptionView.
@@ -119,19 +119,11 @@ class ViewController: UIViewController, UITextViewDelegate {
             
             if cprght != nil {
                 self.copyrightLabel.textColor = .black
-                self.copyrightLabel.text = cprght
+                self.copyrightLabel.text = "Copyright by \(cprght!)"
             } else {
                 self.copyrightLabel.textColor = .gray
                 self.copyrightLabel.text = "Copyright information is unavailable"
             }
-            
         }
     }
-    
-    
-    
 }
-
-
-
-

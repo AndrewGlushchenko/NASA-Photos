@@ -19,7 +19,7 @@ class ViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var copyrightLabel: UILabel!
     @IBOutlet weak var ystdButton: UIButton!
     @IBOutlet weak var tmrrButton: UIButton!
-    
+    @IBOutlet weak var topStackView: UIStackView!
     
     var workDate = WorkDate()
    
@@ -48,6 +48,10 @@ class ViewController: UIViewController, UITextViewDelegate {
         imageView.addGestureRecognizer(rightSwipe)
         imageView.addGestureRecognizer(leftSwipe)
         
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        topStackView.axis = size.width < size.height ? .vertical : .horizontal
     }
     
     

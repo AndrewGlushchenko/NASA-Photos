@@ -20,7 +20,7 @@ class Networking {
     func fetchPhotoInfo(workdate: WorkDate, completion:  @escaping (PhotoInfo?) -> Void) {
         
         let query = [
-            "api_key":"DEMO_KEY",
+            "api_key":"bAc4m0X4hI1WZG2Z9Hevgxev4Drs75hRRMGjdUCt",
             "date": workdate.query
         ]
         
@@ -31,9 +31,7 @@ class Networking {
         URLSession.shared.dataTask(with: url) { data,response, error in
             
             guard let data = data else {
-                if  let error  = error {
-                    print(#function, #line, error.localizedDescription)
-                }
+                if  let error  = error { print(#function, #line, error.localizedDescription) }
                 completion(nil)
                 return
             }

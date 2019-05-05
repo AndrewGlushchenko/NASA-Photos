@@ -11,6 +11,15 @@ import UIKit
     
 class ViewController: UIViewController, UITextViewDelegate {
 
+    var workDate = WorkDate()
+    
+    
+    var photoInfo: PhotoInfo? {
+        didSet {
+            updateUI()
+        }
+    }
+    
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionView: UITextView!
@@ -21,14 +30,6 @@ class ViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var tmrrButton: UIButton!
     @IBOutlet weak var topStackView: UIStackView!
     
-    var workDate = WorkDate()
-   
-    
-    var photoInfo: PhotoInfo? {
-        didSet {
-            updateUI()
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +52,9 @@ class ViewController: UIViewController, UITextViewDelegate {
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        
         topStackView.axis = size.width < size.height ? .vertical : .horizontal
+    
     }
     
     
@@ -119,6 +122,7 @@ class ViewController: UIViewController, UITextViewDelegate {
             self.titleLabel.text = self.photoInfo?.title
             self.descriptionView.text = self.photoInfo?.description
             //            self.descriptionView.
+          
             let cprght = self.photoInfo?.copyright
             
             if cprght != nil {
